@@ -71,8 +71,8 @@ public class HomeWork1 {
         int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (arr[i] == 1) ? 0 : 1;
-            System.out.println(Arrays.toString(arr));
         }
+        System.out.println(Arrays.toString(arr));
     }
 
     static void array100() {
@@ -80,8 +80,8 @@ public class HomeWork1 {
         int[] arr100 = new int[100];
         for (int i = 0; i < arr100.length; i++) {
             arr100[i] = i + 1;
-            System.out.println(Arrays.toString(arr100));
         }
+        System.out.println(Arrays.toString(arr100));
     }
 
     static void array62() {
@@ -91,8 +91,8 @@ public class HomeWork1 {
             if (arr62[i] < 6) {
                 arr62[i] *= 2;
             }
-            System.out.println(Arrays.toString(arr62));
         }
+        System.out.println(Arrays.toString(arr62));
     }
 
     static void arrayTwoDim() {
