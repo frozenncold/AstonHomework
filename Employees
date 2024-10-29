@@ -1,0 +1,34 @@
+class Person {
+    private final String fullName;
+    private final String jobTitle;
+    private final String email;
+    private final String phone;
+    private final double salary;
+    private final int age;
+
+    public Person(String fullName, String position, String email, String phone, double salary, int age) {
+        this.fullName = fullName;
+        this.jobTitle = position;
+        this.email = email;
+        this.phone = phone;
+        this.salary = salary;
+        this.age = age;
+    }
+
+    public void getInfo() {
+        System.out.println("ФИО: " + fullName + "\nДолжность: " + jobTitle + "\nEmail: " + email + "\nТелефон: " + phone + "\nЗарплата: " + salary + "\nВозраст: " + age + "\n" + "\n");
+    }
+
+    public static void main(String[] args) {
+        Person[] persArray = new Person[5];
+        persArray[0] = new Person("Ivanov Ivan", "Engineer", "ivivan@mailbox.com", "892312312", 30000.34, 30);
+        persArray[1] = new Person("Sergeev Sergej", "Writer", "segserj@mailbox.com", "898343976", 55679.22, 22);
+        persArray[2] = new Person("Petrov Petr", "Project manager", "petrptr@mailbox.com", "896148638", 99975.57, 45);
+        persArray[3] = new Person("Vasileva Irina", "Clerk", "irinavdv@mailbox.com", "898322233", 34678.39, 44);
+        persArray[4] = new Person("Aleksej Alekseev", "Art Director", "alexeev@mailbox.com", "891254417", 59866.99, 49);
+
+        for (int i = 0; i < persArray.length; i++) {
+            persArray[i].getInfo();
+        }
+    }
+}
