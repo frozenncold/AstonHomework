@@ -1,0 +1,43 @@
+public class Park {
+    private String name;
+    private Attraction[] attractions;
+
+    public Park(String name, int amount) {
+        this.name = name;
+        this.attractions = new Attraction[amount];
+    }
+
+    private class Attraction {
+        private String name;
+        private String openingHours;
+        private double price;
+
+        public Attraction(String name, String openingHours, double price) {
+            this.name = name;
+            this.openingHours = openingHours;
+            this.price = price;
+        }
+
+        public String toString() {
+            return "Аттракцион: " + name + ", Часы работы: " + openingHours + ", Цена: " + price + "руб.";
+        }
+    }
+
+    public void addAttraction(int number, String name, String openingHours, double price) {
+        attractions[number] = new Attraction(name, openingHours, price);
+    }
+
+    public void displayAttractions() {
+        for (Attraction attraction : attractions) {
+            System.out.println(attraction);
+        }
+    }
+
+    public static void main(String[] args) {
+        Park amusementPark = new Park("Остров кошмаров", 3);
+        amusementPark.addAttraction(0, "Американские горки", "10:00 - 20:00", 99.99);
+        amusementPark.addAttraction(1, "Колесо обозрения", "9:00 - 21:00", 59.99);
+        amusementPark.addAttraction(2, "Карусель", "9:00 - 20:00", 49.99);
+        amusementPark.displayAttractions();
+    }
+}
