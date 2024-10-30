@@ -1,14 +1,14 @@
 class Person {
-    private final String fullName;
-    private final String jobTitle;
-    private final String email;
-    private final String phone;
-    private final double salary;
-    private final int age;
+    private String fullName;
+    private String jobTitle;
+    private String email;
+    private String phone;
+    private double salary;
+    private int age;
 
-    public Person(String fullName, String position, String email, String phone, double salary, int age) {
+    public Person(String fullName, String jobTitle, String email, String phone, double salary, int age) {
         this.fullName = fullName;
-        this.jobTitle = position;
+        this.jobTitle = jobTitle;
         this.email = email;
         this.phone = phone;
         this.salary = salary;
@@ -27,8 +27,8 @@ class Person {
         persArray[3] = new Person("Vasileva Irina", "Clerk", "irinavdv@mailbox.com", "898322233", 34678.39, 44);
         persArray[4] = new Person("Aleksej Alekseev", "Art Director", "alexeev@mailbox.com", "891254417", 59866.99, 49);
 
-        for (int i = 0; i < persArray.length; i++) {
-            persArray[i].getInfo();
+        for (Person person : persArray) {
+            person.getInfo();
         }
     }
 }
