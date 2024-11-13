@@ -8,9 +8,10 @@ class Animal {
     public static int getAnimalCount() {
         return animalCount;
     }
+
     private static final int eats = 3; //сколько кот ест
 
-    public static int getEats(){
+    public static int getEats() {
         return eats;
     }
 }
