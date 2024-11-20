@@ -1,0 +1,68 @@
+package Lesson12;
+
+class MyArraySizeException extends Exception {
+    public MyArraySizeException(String message) {
+        super(message);
+    }
+}
+
+class MyArrayDataException extends Exception {
+    public MyArrayDataException(String message) {
+        super(message);
+    }
+}
+
+public class Exceptions {
+
+    static int twoDimArray(String[][] array) throws MyArraySizeException, MyArrayDataException {
+        if (array.length != 4 || array[0].length != 4) {
+            throw new MyArraySizeException("Размерность массива некорректна");
+        }
+
+        int sum = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                try {
+                    sum += Integer.parseInt(array[i][j]);
+                } catch (NumberFormatException e) {
+                    throw new MyArrayDataException("Неверные данные в ячейках [" + i + "][" + j + "]: " + array[i][j]);
+                }
+            }
+        }
+
+        return sum;
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        String[][] validArray = {
+                {"1", "2", "3", "4"},
+                {"5", "6", "7", "8"},
+                {"9", "10", "11", "12"},
+                {"13", "14", "15", "33"}
+        };
+
+        String[][] invalidArray = {
+                {"1", "2", "3", "4"},
+                {"5", "ы", "7", "8"},
+                {"9", "10", "11", "12"},
+                {"13", "14", "15", "22"}
+        };
+
+        try {
+            int result = Exceptions.twoDimArray(validArray);
+            System.out.println("Сумма элементов массива: " + result);
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.err.println(e.getMessage());
+        }
+
+        try {
+            int result = Exceptions.twoDimArray(invalidArray);
+            System.out.println("Сумма элементов массива: " + result);
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+}
