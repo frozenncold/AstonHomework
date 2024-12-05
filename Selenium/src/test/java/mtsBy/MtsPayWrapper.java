@@ -140,7 +140,7 @@ public class MtsPayWrapper extends BaseSeleniumPage {
         }
     }
 
-    public void bodyPageDown (){
+    public void bodyPageDown() {
         body.sendKeys(Keys.PAGE_DOWN);
         body.sendKeys(Keys.PAGE_DOWN);
     }
@@ -255,11 +255,11 @@ public class MtsPayWrapper extends BaseSeleniumPage {
     }
 
     public String getBePaidAppBtnSumText() {
-       return bePaidAppButtonSum.getDomProperty("innerHTML");
+        return bePaidAppButtonSum.getDomProperty("innerHTML");
     }
 
     public String getBePaidAppSumText() {
-       return bePaidAppSum.getDomProperty("innerHTML");
+        return bePaidAppSum.getDomProperty("innerHTML");
     }
 
     public String bePaidAppBtnSumTextSubstring() {
