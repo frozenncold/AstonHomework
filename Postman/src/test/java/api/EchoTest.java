@@ -65,8 +65,6 @@ public class EchoTest {
         JsonPath jsonPath = response.jsonPath();
         String responseData = jsonPath.get("data");
         Assertions.assertEquals("This is expected to be sent back as part of response body.", responseData);
-
-
     }
 
     @Test
