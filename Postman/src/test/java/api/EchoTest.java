@@ -3,12 +3,10 @@ package api;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.comparesEqualTo;
 import static org.hamcrest.Matchers.equalTo;
 
 public class EchoTest {
@@ -19,8 +17,10 @@ public class EchoTest {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         Response response = given()
                 .when()
-                .get("get?foo1=bar1&foo2=bar2")
-                .then().log().all()
+                .queryParam("foo1", "bar1")
+                .queryParam("foo2", "bar2")
+                .get("get")
+                .then()
                 .body("args.foo1", equalTo("bar1"))
                 .body("args.foo2", equalTo("bar2"))
                 .extract().response();
@@ -30,11 +30,12 @@ public class EchoTest {
     public void POSTRawTextTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         Response response = given()
+                .body("This is expected to be sent back as part of response body.")
                 .when().post("post")
-                .then().log().all()
+                .then()
                 .extract().response();
         JsonPath jsonPath = response.jsonPath();
-        String responseData = jsonPath.get("data"); // Exception из-за спецификаций, если их убрать возвращает null, не смог найти решения проблем
+        String responseData = jsonPath.get("data");
         Assertions.assertEquals("This is expected to be sent back as part of response body.", responseData);
     }
 
@@ -42,23 +43,28 @@ public class EchoTest {
     public void POSTFormDataTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         Response response = given()
-                .header("Content-Type", "application/x-www-form-urlencoded")
-                .formParam("form.foo1", "bar1")
-                .formParam("form.foo2", "bar1")
-                .when().post("post")
-                .then().log().all()
-                .body("foo1", equalTo("bar1"))
-                .body("foo2", equalTo("bar2"))
+                .contentType("application/x-www-form-urlencoded; charset=utf-8")
+                .formParam("foo1", "bar1")
+                .formParam("foo2", "bar2")
+                .when()
+                .post("post")
+                .then()
+                .body("form.foo1", equalTo("bar1"))
+                .body("form.foo2", equalTo("bar2"))
                 .extract().response();
     }
 
     @Test
     public void PUTRequestTest() {
-        given()
-                .baseUri("https://postman-echo.com/")
-                .when().put("put")
-                .then().log().all().statusCode(HttpStatus.SC_OK)
-                .and().body("data", equalTo("This is expected to be sent back as part of response body."));
+        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
+        Response response = given()
+                .body("This is expected to be sent back as part of response body.")
+                .put("put")
+                .then()
+                .extract().response();
+        JsonPath jsonPath = response.jsonPath();
+        String responseData = jsonPath.get("data");
+        Assertions.assertEquals("This is expected to be sent back as part of response body.", responseData);
 
 
     }
@@ -67,22 +73,27 @@ public class EchoTest {
     public void PATCHRequestTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         Response response = given()
-                .when().patch("patch")
-                .then().log().all()
-                .body("data", comparesEqualTo("This is expected to be sent back as part of response body."))
+                .body("This is expected to be sent back as part of response body.")
+                .patch("patch")
+                .then()
                 .extract().response();
+        JsonPath jsonPath = response.jsonPath();
+        String responseData = jsonPath.get("data");
+        Assertions.assertEquals("This is expected to be sent back as part of response body.", responseData);
     }
 
     @Test
     public void DELETERequestTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         Response response = given()
-                .when().delete("delete")
-                .then().log().body()
-                .body("data", equalTo("This is expected to be sent back as part of response body."))
+                .body("This is expected to be sent back as part of response body.")
+                .delete("delete")
+                .then()
                 .extract().response();
+        JsonPath jsonPath = response.jsonPath();
+        String responseData = jsonPath.get("data");
+        Assertions.assertEquals("This is expected to be sent back as part of response body.", responseData);
     }
-    //Не могу понять почему возвращает либо null, либо <{}>
 }
 
 
