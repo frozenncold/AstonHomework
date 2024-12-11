@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Dec 10 21:39:36 MSK 2024","Tue Dec 10 21:39:39 MSK 2024","3236","","mtsBy.MtsByWrapperTest","","mtsBy.MtsByWrapperTest","logosCheckTest","logosCheckTest()",""
+"passed","Tue Dec 10 21:39:55 MSK 2024","Tue Dec 10 21:39:58 MSK 2024","2916","","mtsBy.MtsByWrapperTest","","mtsBy.MtsByWrapperTest","moreAboutServiceTest","moreAboutServiceTest()",""
+"passed","Tue Dec 10 21:39:58 MSK 2024","Tue Dec 10 21:40:00 MSK 2024","2751","","mtsBy.MtsByWrapperTest","","mtsBy.MtsByWrapperTest","titleCheckTest","titleCheckTest()",""
+"passed","Tue Dec 10 21:39:39 MSK 2024","Tue Dec 10 21:39:47 MSK 2024","7548","","mtsBy.MtsByWrapperTest","","mtsBy.MtsByWrapperTest","connectionFieldsTest","connectionFieldsTest()",""
+"passed","Tue Dec 10 21:39:47 MSK 2024","Tue Dec 10 21:39:50 MSK 2024","3448","","mtsBy.MtsByWrapperTest","","mtsBy.MtsByWrapperTest","dataInputTest","dataInputTest()",""
+"passed","Tue Dec 10 21:39:50 MSK 2024","Tue Dec 10 21:39:55 MSK 2024","4665","","mtsBy.MtsByWrapperTest","","mtsBy.MtsByWrapperTest","textInTheFieldsTest","textInTheFieldsTest()",""
